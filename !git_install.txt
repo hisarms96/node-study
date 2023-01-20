@@ -134,3 +134,13 @@ Changes to be committed:
  test/*
 
  
+
+ssh KEY
+ssh-keygen -t rsa -b 4096 -C "hisarms@puts.ac.kr"
+
+
+## 원격저장소 연결
+git remote add origin https://github.com/hisarms96/node-study.git
+
+##전송
+git push origin master
