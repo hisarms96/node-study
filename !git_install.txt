@@ -1,0 +1,136 @@
+Note by sciwoong, 2023-01-19
+  https://youtu.be/Z9dvM7qgN9s
+--------------------------------------------------
+
+Terminal program recommendation
+  for windows --> cmder   (git included!)
+  for mac --> iTerm2
+
+To install git
+  > sudo apt install git
+
+To check version
+  > git --version
+  git version 2.34.1
+
+To check configuration
+  git configuration file name ==> .gitconfig
+
+  > git config --list
+  (pree q to exit)
+
+To edit global git config
+  > git config --global -e   ==> editor
+  
+  To change editor to visual studio code
+  > git config --global core.editor "code --wait"
+  
+  then, type again
+  > git config --global -e
+
+More configuration
+
+  > git config --global user.name "sciwoong"
+  > git config --global user.email "hisarms96@puts.ac.kr"
+
+  > git config user.name
+  > git config user.email
+
+  **To avoid CR/LF issue**
+  
+  for windows --> git config --global core.autocrlf true
+  for mac,linux-->git config --global core.autocrlf input
+
+*git command structure
+git <command> <-options>
+
+*Check git official reference*
+ https://git-scm.com/docs
+
+
+To initialize git
+
+first move to the target directory
+> cd /home/sciwoong/node-study
+
+
+> git init
+
+.git  folder has been created but not visible!
+
+
+> ls -al
+
+to open .git folder with file explorer
+> open .git
+
+to cancel git init
+> rm -rf .git
+
+
+Git workflow
++-----------------------------------------------------------+--------------------------+
+|                         local                             |          remote          |
+|                                                           |                          |
+|  working dir.          staging area       .git directory  |       .git directory     |
+| untracked  tracked                                        |                          |
++-----------------------------------------------------------+--------------------------+
+       b.txt   --->   b.txt
+                     (b.txt)   -->commit-->  b.txt
+                                             (b.txt)   --push--->  dkjdfkjd [b.txt]
+                                                                    ^SHA-1
+
+To check file status
+(assume that a.txt, b.txt, c.txt are in working dir. with untracked initially)
+
+> git status
+Untracked files:  (with red color)
+    a.txt  b.txt  c.txt
+
+To add a (untracked file)
+> git add a.txt
+
+  (a.txt is now tracked and in staging area)
+
+> git status
+Changes to be committed:
+    new file:   a.txt
+
+Untracked files:
+     b.txt, c.txt
+
+> git add b.txt c.txt
+> git status
+Changes to be committed:
+    new file:   a.txt
+    new file:   b.txt
+    new file:   c.txt
+
+** modify a
+
+> echo sometext >> a.txt
+
+** a.txt was modified, so there're   a.txt(modified in tracked) && a.txt(new in staging status)
+> git add a.txt
+ ==> a.txt(modified in tracked) ----> a.txt(new in staging area)
+
+
+
+
+ To revert  all files in staging area
+ > git rm --cached
+ > git status
+
+
+ **make .gitignore file NOT to track  file(s) or directory
+
+ e.g.
+ 
+ .gitignore
+ #logs
+ *.logs
+
+ #test
+ test/*
+
+ 
